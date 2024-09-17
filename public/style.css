@@ -1,9 +1,110 @@
-* {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+@import url("https://use.typekit.net/mch3zsm.css");
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family-text);
+  background-color: var(--color-background);
 }
 
-header,
+:root {
+  --color-background: #ecffe6;
+  --color-primaer: #2db814;
+  --color-auszeichnung: #1460b8;
+  --color-black: #291f18;
+
+  --font-family-text: bryant-web-alternate, sans-serif;
+  --font-family-titel: anisette-std, sans-serif;
+
+  --font-weight-titel: 400;
+  --font-weight-text: 400;
+
+  --font-size-ueberschrift: 32px;
+  --font-size-text: 20px;
+  --font-size-nav: 15px;
+  --font-size-footer: 10px;
+}
+
+html {
+  scroll-behavior: smooth;
+  margin: 20px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 90%;
+  min-height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid transparent;
+  border-bottom-color: var(--color-black);
+}
+
+header a {
+  text-decoration: none;
+  color: var(--color-black);
+  font-weight: var(--font-weight-text);
+  font-size: var(--font-size-nav);
+}
+
+header img.logo {
+  height: 10px;
+  width: auto;
+}
+
+h1 {
+  margin: 80px 0 40px 0;
+  font-family: var(--font-family-titel);
+  font-weight: var(--font-weight-titel);
+  font-size: var(--font-size-ueberschrift);
+}
+
+p {
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-titel);
+  font-size: var(--font-size-text);
+}
+
+.beitraege__container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.beitraege__container img {
+  width: 80%;
+  height: auto;
+}
+
+.beitraege__container--bewertung {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-primaer);
+  opacity: 0.5;
+}
+
+.beitraege__container--datum {
+  font-size: var(--font-size-footer);
+}
+
 footer {
-  background-color: lightblue;
-  padding: 12px;
+  width: 100%;
+  min-height: 20px;
+  display: flex;
+  justify-content: start;
+  border: 2px solid transparent;
+  border-top-color: var(--color-black);
+  margin-top: 8px;
+}
+
+footer p {
+  color: var(--color-black);
+  font-weight: var(--font-weight-text);
+  font-size: var(--font-size-footer);
+  margin-top: 8px;
 }
