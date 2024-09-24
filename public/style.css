@@ -33,6 +33,12 @@ html {
   margin: 20px;
 }
 
+body {
+  min-height: 100vh;
+}
+
+/* ---------------------- Navigation ----------------------*/
+
 header {
   position: fixed;
   top: 0;
@@ -57,6 +63,8 @@ header img.logo {
   width: auto;
 }
 
+/* ---------------------- Allgemeine Tags ----------------------*/
+
 h1 {
   margin: 80px 0 40px 0;
   font-family: var(--font-family-titel);
@@ -70,27 +78,95 @@ p {
   font-size: var(--font-size-text);
 }
 
+p.auszeichnung {
+  color: var(--color-auszeichnung);
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+input {
+  border: 2px var(--color-black) solid;
+  background-color: none;
+  min-height: 20px;
+  width: 250px;
+  padding: 5px;
+}
+
+button {
+  padding: 5px;
+  background-color: var(--color-primaer);
+  color: var(--color-background);
+  min-height: 20px;
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  border: none;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-titel);
+  font-size: var(--font-size-text);
+}
+
+/* ---------------------- Seite - Beiträge ----------------------*/
+
 .beitraege__container {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.beitraege__container img {
+.beitraege__container--bild {
+  position: relative;
+}
+
+.beitraege__container--bild img {
   width: 80%;
   height: auto;
 }
 
 .beitraege__container--bewertung {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 20%;
   display: flex;
   flex-direction: column;
+  align-items: end;
+  justify-content: space-evenly;
   background-color: var(--color-primaer);
   opacity: 0.5;
+}
+
+.beitraege__container--bewertung a {
+  width: 60px;
+  height: auto;
+  display: flex;
+  background-color: transparent;
+}
+
+.beitraege__container--bewertung a img {
+  background-color: transparent;
 }
 
 .beitraege__container--datum {
   font-size: var(--font-size-footer);
 }
+
+/* ---------------------- Seite - Rangliste ----------------------*/
+
+/* ---------------------- Seite - neuer Beitrag ----------------------*/
+
+/* ---------------------- Seite - Profil ----------------------*/
+
+.profilbild {
+  margin-bottom: 40px;
+}
+
+/* ---------------------- Footer ----------------------*/
 
 footer {
   width: 100%;
@@ -99,7 +175,7 @@ footer {
   justify-content: start;
   border: 2px solid transparent;
   border-top-color: var(--color-black);
-  margin-top: 8px;
+  margin-top: 40px;
 }
 
 footer p {
