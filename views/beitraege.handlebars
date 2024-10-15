@@ -16,7 +16,9 @@
       </div>
     </div>
 
-    <p>Titel des Beitrages</p>
-    <p class="beitraege__container--datum">17.09.2024</p>
+    {{#posts}}
+      <p>{{titel}}</p>
+      <p class="beitraege__container--datum">{{datum}}</p>
+    {{/posts}}
   </div>
 </div>

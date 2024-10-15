@@ -10,23 +10,30 @@ const app = createApp({
 
 /* Startseite */
 app.get("/", async function (req, res) {
-  res.render("beitraege", {});
+  const users = await app.locals.pool.query("select benutzername from users");
+  const posts = await app.locals.pool.query(
+    "select bild, titel, datum from posts"
+  );
+  res.render("beitraege", { posts: posts.rows, users: users.rows });
 });
 
 app.get("/rangliste", async function (req, res) {
-  res.render("rangliste", {});
+  const users = await app.locals.pool.query("select benutzername from users");
+  const posts = await app.locals.pool.query(
+    "select bild, titel, datum from posts"
+  );
+  res.render("rangliste", { posts: posts.rows, users: users.rows });
 });
 
 app.get("/neu", async function (req, res) {
-  res.render("neu", {});
+  const users = await app.locals.pool.query("select benutzername from users");
+  const posts = await app.locals.pool.query("select * from posts");
+  res.render("neu", { posts: posts.rows, users: users.rows });
 });
 
 app.get("/profil", async function (req, res) {
-  res.render("profil", {});
-});
-
-app.get("/impressum", async function (req, res) {
-  res.render("impressum", {});
+  const users = await app.locals.pool.query("select * from users");
+  res.render("profil", { users: users.rows });
 });
 
 /*Wichtig! Diese Zeilen müssen immer am Schluss der Website stehen! */
