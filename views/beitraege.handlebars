@@ -7,18 +7,17 @@
 </div>
 <h1>Beiträge</h1>
 <div class="beitraege">
-  <div class="beitraege__container">
-    <div class="beitraege__container--bild">
-      <img src="construction.gif" alt="" />
-      <div class="beitraege__container--bewertung">
-        <a href="#"><img src="herz.svg" alt="" /></a>
-        <a href="#"><img src="lustig.svg" alt="" /></a>
+  {{#posts}}
+    <div class="beitraege__container">
+      <div class="beitraege__container--bild">
+        <img src="construction.gif" alt="" />
+        <div class="beitraege__container--bewertung">
+          <a href="#"><img src="herz.svg" alt="" /></a>
+          <a href="#"><img src="lustig.svg" alt="" /></a>
+        </div>
       </div>
-    </div>
-
-    {{#posts}}
       <p>{{titel}}</p>
       <p class="beitraege__container--datum">{{datum}}</p>
-    {{/posts}}
-  </div>
+    </div>
+  {{/posts}}
 </div>

@@ -1,17 +1,41 @@
 <h1>Rangliste</h1>
 <div class="rangliste__container">
   <div class="rangliste__container--text">
-    <a class="rc__text--suess">
+    <a id="rc__text--suess">
       <p>Süssestes</p>
-      <img src="herz.svg" alt="" />
+      <img src="herz.svg" alt="" class="svg" />
     </a>
-    <a class="rc__text--lustig">
+    <a id="rc__text--lustig">
       <p>Lustigstes</p>
-      <img src="lustig.svg" alt="" />
+      <img src="lustig.svg" alt="" class="svg" />
     </a>
-    <p>Tier der Woche:</p>
   </div>
-
-  <div class="rangliste__container--suess"></div>
-  <div class="rangliste__container--lustig"></div>
+  <p>Tier der Woche:</p>
+  <div id="rangliste__container--suess">
+    {{#suess}}
+      <div class="rc__suess--beitrag">
+        <img src="construction.gif" alt="" />
+        <p>{{titel}}</p>
+        <p class="rc__suess--datum">{{datum}}</p>
+      </div>
+    {{/suess}}
+  </div>
+  <div id="rangliste__container--lustig">
+    {{#lustig}}
+      <div class="rc__lustig--beitrag">
+        <img src="construction.gif" alt="" />
+        <p>{{titel}}</p>
+        <p class="rc__lustig--datum">{{datum}}</p>
+      </div>
+    {{/lustig}}
+  </div>
 </div>
+<script>
+  const linkS = document.getElementById("rc__text--suess"); const bewertungS =
+  document.getElementById("rangliste__container--suess"); const linkL =
+  document.getElementById("rc__text--lustig"); const bewertungL =
+  document.getElementById("rangliste__container--lustig");
+  linkS.addEventListener("click", () => { bewertungS.style.display = "flex";
+  bewertungL.style.display = "none"; }); linkL.addEventListener("click", () => {
+  bewertungS.style.display = "none"; bewertungL.style.display = "flex"; });
+</script>

@@ -49,6 +49,7 @@ header {
   align-items: center;
   border: 2px solid transparent;
   border-bottom-color: var(--color-black);
+  z-index: 100;
 }
 
 header a {
@@ -112,6 +113,12 @@ button {
 
 /* ---------------------- Seite - Beiträge ----------------------*/
 
+.beitraege {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
 .beitraege__container {
   display: flex;
   flex-direction: column;
@@ -157,6 +164,50 @@ button {
 }
 
 /* ---------------------- Seite - Rangliste ----------------------*/
+
+.rangliste__container--text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.rc__text--suess,
+.rc__text--lustig {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.svg {
+  width: 50%;
+  height: auto;
+}
+
+#rangliste__container--suess,
+#rangliste__container--lustig {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.rc__suess--beitrag,
+.rc__lustig--beitrag {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rc__suess--beitrag img,
+.rc__lustig--beitrag img {
+  width: 80%;
+  height: auto;
+}
+
+.rc__suess--datum,
+.rc__lustig--datum {
+  font-size: var(--font-size-footer);
+}
 
 /* ---------------------- Seite - neuer Beitrag ----------------------*/
 
