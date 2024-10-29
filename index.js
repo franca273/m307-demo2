@@ -11,11 +11,11 @@ const app = createApp({
 /* Startseite */
 app.get("/", async function (req, res) {
   const users = await app.locals.pool.query("select benutzername from users");
-  const posts = await app.locals.pool.query(
-    "select bild, titel, datum from posts"
-  );
+  const posts = await app.locals.pool.query("select * from posts");
   for (const post of posts.rows) {
-    post.datum = post.datum.toLocaleDateString("de-DE");
+    if (post.datum) {
+      post.datum = post.datum.toLocaleDateString("de-DE");
+    }
   }
   res.render("beitraege", { posts: posts.rows, users: users.rows });
 });
@@ -25,22 +25,6 @@ app.get("/rangliste", async function (req, res) {
   const posts = await app.locals.pool.query(
     "select bild, titel, datum from posts"
   );
-  /*
-  const linkS = document.getElementById("rc__text--suess");
-  const bewertungS = document.getElementById("rangliste__container--suess");
-  const linkL = document.getElementById("rc__text--lustig");
-  const bewertungL = document.getElementById("rangliste__container--lustig");
-
-  linkS.addEventListener("click", () => {
-    bewertungS.style.visibility = "visible";
-    bewertungL.style.visibility = "hidden";
-  });
-
-  linkL.addEventListener("click", () => {
-    bewertungS.style.visibility = "hidden";
-    bewertungL.style.visibility = "visible";
-  });
-*/
   const suess = await app.locals.pool.query(
     "select * from posts order by herzen DESC limit 5"
   );
@@ -48,10 +32,14 @@ app.get("/rangliste", async function (req, res) {
     "select * from posts order by smileys DESC limit 5"
   );
   for (const postS of suess.rows) {
-    postS.datum = postS.datum.toLocaleDateString("de-DE");
+    if (postS.datum) {
+      postS.datum = postS.datum.toLocaleDateString("de-DE");
+    }
   }
   for (const postL of lustig.rows) {
-    postL.datum = postL.datum.toLocaleDateString("de-DE");
+    if (postL.datum) {
+      postL.datum = postL.datum.toLocaleDateString("de-DE");
+    }
   }
   res.render("rangliste", {
     posts: posts.rows,
@@ -70,6 +58,31 @@ app.get("/neu", async function (req, res) {
 app.get("/profil", async function (req, res) {
   const users = await app.locals.pool.query("select * from users");
   res.render("profil", { users: users.rows });
+});
+
+/* ------------------------ Daten in Datenbank abfüllen -----------------------*/
+app.post("/create_post", async function (req, res) {
+  await app.locals.pool.query(
+    "INSERT INTO posts (titel, bild, herzen, smileys) VALUES ($1, $2, 0, 0)",
+    [req.body.titel, req.body.bild]
+  );
+  res.redirect("/");
+});
+
+app.post("/new_profil", async function (req, res) {
+  await app.locals.pool.query(
+    "UPDATE users SET benutzername = $1, passwort = $2 WHERE id = ",
+    [req.body.benutzername, req.body.passwort]
+  );
+  res.redirect("/");
+});
+
+app.post("/like", async function (req, res) {
+  await app.locals.pool.query(
+    "UPDATE posts SET herzen = herzen + 1 WHERE id = $1",
+    [req.body.id]
+  );
+  res.redirect(`/#post-${req.body.id}`);
 });
 
 /*Wichtig! Diese Zeilen müssen immer am Schluss der Website stehen! */

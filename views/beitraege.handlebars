@@ -8,11 +8,14 @@
 <h1>Beiträge</h1>
 <div class="beitraege">
   {{#posts}}
-    <div class="beitraege__container">
+    <div class="beitraege__container" id="post-{{id}}">
       <div class="beitraege__container--bild">
         <img src="construction.gif" alt="" />
         <div class="beitraege__container--bewertung">
-          <a href="#"><img src="herz.svg" alt="" /></a>
+          <form action="/like" method="POST">
+            <input type="hidden" name="id" value="{{id}}" />
+            <input type="image" src="herz.svg" />
+          </form>
           <a href="#"><img src="lustig.svg" alt="" /></a>
         </div>
       </div>

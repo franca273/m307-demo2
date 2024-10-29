@@ -183,10 +183,16 @@ button {
   height: auto;
 }
 
-#rangliste__container--suess,
-#rangliste__container--lustig {
+#rangliste__container--suess {
   margin-top: 40px;
   display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+#rangliste__container--lustig {
+  margin-top: 40px;
+  display: none;
   flex-direction: column;
   gap: 40px;
 }

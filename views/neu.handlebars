@@ -1,15 +1,15 @@
 <h1>neuer Beitrag</h1>
 
-<div class="input-box">
+<form action="/create_post" method="post" class="input-box">
   <div>
     <p>Titel:</p>
-    <input type="text" placeholder="Titel des Beitrages" />
+    <input type="text" name="titel" placeholder="Titel des Beitrages" />
   </div>
   <div>
     <p>Bild:</p>
-    <input type="image" />
+    <input type="text" name="bild" />
   </div>
   <div>
-    <button>Veröffentlichen</button>
+    <button type="submit">Veröffentlichen</button>
   </div>
-</div>
+</form>
