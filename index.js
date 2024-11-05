@@ -10,6 +10,10 @@ const app = createApp({
 
 /* Startseite */
 app.get("/", async function (req, res) {
+  if (!req.session.userid) {
+    res.redirect("/login");
+    return;
+  }
   const users = await app.locals.pool.query("select benutzername from users");
   const posts = await app.locals.pool.query("select * from posts");
   for (const post of posts.rows) {
@@ -21,6 +25,10 @@ app.get("/", async function (req, res) {
 });
 
 app.get("/rangliste", async function (req, res) {
+  if (!req.session.userid) {
+    res.redirect("/login");
+    return;
+  }
   const users = await app.locals.pool.query("select benutzername from users");
   const posts = await app.locals.pool.query(
     "select bild, titel, datum from posts"
@@ -50,12 +58,20 @@ app.get("/rangliste", async function (req, res) {
 });
 
 app.get("/neu", async function (req, res) {
+  if (!req.session.userid) {
+    res.redirect("/login");
+    return;
+  }
   const users = await app.locals.pool.query("select benutzername from users");
   const posts = await app.locals.pool.query("select * from posts");
   res.render("neu", { posts: posts.rows, users: users.rows });
 });
 
 app.get("/profil", async function (req, res) {
+  if (!req.session.userid) {
+    res.redirect("/login");
+    return;
+  }
   const users = await app.locals.pool.query("select * from users");
   res.render("profil", { users: users.rows });
 });

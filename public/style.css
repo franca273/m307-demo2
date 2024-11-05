@@ -79,7 +79,7 @@ p {
   font-size: var(--font-size-text);
 }
 
-p.auszeichnung {
+#auszeichnung-ab {
   color: var(--color-auszeichnung);
 }
 
@@ -110,6 +110,34 @@ button {
   font-weight: var(--font-weight-titel);
   font-size: var(--font-size-text);
 }
+
+/* ---------------------- Seite - Login ----------------------*/
+
+.login-titel {
+  margin: 80px 0 40px 0;
+  font-family: var(--font-family-titel);
+  font-weight: var(--font-weight-titel);
+  font-size: var(--font-size-ueberschrift);
+}
+
+#auszeichnung {
+  color: var(--color-auszeichnung);
+  text-decoration: none;
+}
+
+.register-titel {
+  margin: 80px 0 40px 0;
+  font-family: var(--font-family-titel);
+  font-weight: var(--font-weight-titel);
+  font-size: var(--font-size-ueberschrift);
+}
+
+#auszeichnung-r {
+  color: var(--color-auszeichnung);
+  text-decoration: none;
+}
+
+/* ---------------------- Seite - Registrieren ----------------------*/
 
 /* ---------------------- Seite - Beiträge ----------------------*/
 
