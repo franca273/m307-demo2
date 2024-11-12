@@ -1,4 +1,4 @@
-import { createApp } from "./config.js";
+import { createApp, upload } from "./config.js";
 
 const app = createApp({
   user: "snowy_night_6881",
@@ -15,7 +15,9 @@ app.get("/", async function (req, res) {
     return;
   }
   const users = await app.locals.pool.query("select benutzername from users");
-  const posts = await app.locals.pool.query("select * from posts");
+  const posts = await app.locals.pool.query(
+    "select * from posts ORDER BY datum DESC"
+  );
   for (const post of posts.rows) {
     if (post.datum) {
       post.datum = post.datum.toLocaleDateString("de-DE");
@@ -62,7 +64,7 @@ app.get("/neu", async function (req, res) {
     res.redirect("/login");
     return;
   }
-  const users = await app.locals.pool.query("select benutzername from users");
+  const users = await app.locals.pool.query("select * from users");
   const posts = await app.locals.pool.query("select * from posts");
   res.render("neu", { posts: posts.rows, users: users.rows });
 });
@@ -77,18 +79,18 @@ app.get("/profil", async function (req, res) {
 });
 
 /* ------------------------ Daten in Datenbank abfüllen -----------------------*/
-app.post("/create_post", async function (req, res) {
+app.post("/create_post", upload.single("bild"), async function (req, res) {
   await app.locals.pool.query(
-    "INSERT INTO posts (titel, bild, herzen, smileys) VALUES ($1, $2, 0, 0)",
-    [req.body.titel, req.body.bild]
+    "INSERT INTO posts (titel, bild, herzen, smileys, user_id, datum) VALUES ($1, $2, 0, 0, $3, CURRENT_TIMESTAMP)",
+    [req.body.titel, req.file.filename, req.session.userid]
   );
   res.redirect("/");
 });
 
 app.post("/new_profil", async function (req, res) {
   await app.locals.pool.query(
-    "UPDATE users SET benutzername = $1, passwort = $2 WHERE id = ",
-    [req.body.benutzername, req.body.passwort]
+    "UPDATE users SET benutzername = $1, passwort = $2 WHERE id = $3",
+    [req.body.benutzername, req.body.passwort, req.session.userid]
   );
   res.redirect("/");
 });
@@ -96,6 +98,14 @@ app.post("/new_profil", async function (req, res) {
 app.post("/like", async function (req, res) {
   await app.locals.pool.query(
     "UPDATE posts SET herzen = herzen + 1 WHERE id = $1",
+    [req.body.id]
+  );
+  res.redirect(`/#post-${req.body.id}`);
+});
+
+app.post("/smile", async function (req, res) {
+  await app.locals.pool.query(
+    "UPDATE posts SET smileys = smileys + 1 WHERE id = $1",
     [req.body.id]
   );
   res.redirect(`/#post-${req.body.id}`);

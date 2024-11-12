@@ -10,13 +10,16 @@
   {{#posts}}
     <div class="beitraege__container" id="post-{{id}}">
       <div class="beitraege__container--bild">
-        <img src="construction.gif" alt="" />
+        <img src="/uploads/{{bild}}" alt="" />
         <div class="beitraege__container--bewertung">
           <form action="/like" method="POST">
             <input type="hidden" name="id" value="{{id}}" />
             <input type="image" src="herz.svg" />
           </form>
-          <a href="#"><img src="lustig.svg" alt="" /></a>
+          <form action="/smile" method="POST">
+            <input type="hidden" name="id" value="{{id}}" />
+            <input type="image" src="lustig.svg" />
+          </form>
         </div>
       </div>
       <p>{{titel}}</p>

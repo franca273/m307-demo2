@@ -1,10 +1,14 @@
 <h2 class="register-titel">Registrieren</h2>
-
-<form action="/register" method="POST">
-  Benutzername:
-  <input name="benutzername" type="text" /><br />
-  Passwort:
-  <input name="passwort" type="password" /><br />
-  <input type="submit" value="Registrieren" />
-</form>
-<a href="/login" class="button" id="auszeichnung-r">-> Login</a>
+<div class="login">
+  <form action="/register" method="POST">
+    <div class="login-box">
+      Benutzername:
+      <input name="benutzername" type="text" /><br />
+    </div>
+    <div class="login-box">
+      Passwort:
+      <input name="passwort" type="password" /><br />
+    </div>
+    <input type="submit" value="Registrieren" class="btn" />
+  </form>
+  <a href="/login" class="button" id="auszeichnung-r">-> Login</a></div>

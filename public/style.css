@@ -112,6 +112,11 @@ button {
 }
 
 /* ---------------------- Seite - Login ----------------------*/
+.login form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
 .login-titel {
   margin: 80px 0 40px 0;
@@ -120,9 +125,23 @@ button {
   font-size: var(--font-size-ueberschrift);
 }
 
+.login .btn {
+  padding: 5px;
+  background-color: var(--color-primaer);
+  color: var(--color-background);
+  min-height: 20px;
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  border: none;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-titel);
+  font-size: var(--font-size-text);
+}
+
 #auszeichnung {
   color: var(--color-auszeichnung);
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .register-titel {

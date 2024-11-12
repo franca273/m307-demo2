@@ -1,13 +1,18 @@
 <h1>neuer Beitrag</h1>
 
-<form action="/create_post" method="post" class="input-box">
+<form
+  action="/create_post"
+  enctype="multipart/form-data"
+  method="post"
+  class="input-box"
+>
   <div>
     <p>Titel:</p>
     <input type="text" name="titel" placeholder="Titel des Beitrages" />
   </div>
   <div>
     <p>Bild:</p>
-    <input type="text" name="bild" />
+    <input type="file" name="bild" />
   </div>
   <div>
     <button type="submit">Veröffentlichen</button>
