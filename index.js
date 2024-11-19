@@ -1,4 +1,5 @@
 import { createApp, upload } from "./config.js";
+import bcrypt from "bcrypt";
 
 const app = createApp({
   user: "snowy_night_6881",
@@ -16,7 +17,7 @@ app.get("/", async function (req, res) {
   }
   const users = await app.locals.pool.query("select benutzername from users");
   const posts = await app.locals.pool.query(
-    "select * from posts ORDER BY datum DESC"
+    "select * from posts ORDER BY id DESC"
   );
   for (const post of posts.rows) {
     if (post.datum) {
@@ -90,7 +91,11 @@ app.post("/create_post", upload.single("bild"), async function (req, res) {
 app.post("/new_profil", async function (req, res) {
   await app.locals.pool.query(
     "UPDATE users SET benutzername = $1, passwort = $2 WHERE id = $3",
-    [req.body.benutzername, req.body.passwort, req.session.userid]
+    [
+      req.body.benutzername,
+      bcrypt.hashSync(req.body.passwort, 10),
+      req.session.userid,
+    ]
   );
   res.redirect("/");
 });

@@ -33,10 +33,6 @@ html {
   margin: 20px;
 }
 
-body {
-  min-height: 100vh;
-}
-
 /* ---------------------- Navigation ----------------------*/
 
 header {
@@ -111,8 +107,19 @@ button {
   font-size: var(--font-size-text);
 }
 
-/* ---------------------- Seite - Login ----------------------*/
+/* ---------------------- Seite - Login/Registrieren ----------------------*/
 .login form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.login form .btn {
+  margin-top: 20px;
+}
+
+.login-box {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -139,11 +146,6 @@ button {
   font-size: var(--font-size-text);
 }
 
-#auszeichnung {
-  color: var(--color-auszeichnung);
-  text-decoration: underline;
-}
-
 .register-titel {
   margin: 80px 0 40px 0;
   font-family: var(--font-family-titel);
@@ -151,12 +153,11 @@ button {
   font-size: var(--font-size-ueberschrift);
 }
 
+#auszeichnung,
 #auszeichnung-r {
   color: var(--color-auszeichnung);
   text-decoration: none;
 }
-
-/* ---------------------- Seite - Registrieren ----------------------*/
 
 /* ---------------------- Seite - Beiträge ----------------------*/
 
@@ -195,15 +196,16 @@ button {
   opacity: 0.5;
 }
 
-.beitraege__container--bewertung a {
+.beitraege__container--bewertung form {
+  background-color: transparent;
+}
+
+.beitraege__bewertung--symbole {
   width: 60px;
   height: auto;
   display: flex;
   background-color: transparent;
-}
-
-.beitraege__container--bewertung a img {
-  background-color: transparent;
+  border: 0px;
 }
 
 .beitraege__container--datum {

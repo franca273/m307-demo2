@@ -2,8 +2,8 @@
   <h1>Willkommen bei Tierly</h1>
   <p>Wir sind eine Team aus zwei Personen. Unser Ziel ist es ganz viele lustige
     und süsse Tierfotos zu sammeln, die dir garantiert den Tag versüssen werden.
-    Natürlich ist und auch wichtig das ihr mitentscheiden könnt, welche den das
-    beste Bild ist.</p>
+    Natürlich ist und auch wichtig das ihr mitentscheiden könnt, welches denn
+    das beste Bild ist.</p>
 </div>
 <h1>Beiträge</h1>
 <div class="beitraege">
@@ -14,11 +14,19 @@
         <div class="beitraege__container--bewertung">
           <form action="/like" method="POST">
             <input type="hidden" name="id" value="{{id}}" />
-            <input type="image" src="herz.svg" />
+            <input
+              class="beitraege__bewertung--symbole"
+              type="image"
+              src="herz.svg"
+            />
           </form>
           <form action="/smile" method="POST">
             <input type="hidden" name="id" value="{{id}}" />
-            <input type="image" src="lustig.svg" />
+            <input
+              class="beitraege__bewertung--symbole"
+              type="image"
+              src="lustig.svg"
+            />
           </form>
         </div>
       </div>
