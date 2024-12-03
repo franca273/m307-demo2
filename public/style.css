@@ -154,7 +154,8 @@ button {
 }
 
 #auszeichnung,
-#auszeichnung-r {
+#auszeichnung-r,
+#auszeichnung-p {
   color: var(--color-auszeichnung);
   text-decoration: none;
 }
@@ -218,6 +219,11 @@ button {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.rangliste__container--text img {
+  cursor: pointer;
 }
 
 .rc__text--suess,
@@ -269,6 +275,8 @@ button {
 /* ---------------------- Seite - Profil ----------------------*/
 
 .profilbild {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 40px;
 }
 
